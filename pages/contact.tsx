@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { FormEventHandler, useState } from 'react';
 
 const Contact = () => {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
     global.analytics.track('Form Submitted', {
       message,
-    })
-    setMessage('')
-  }
+    });
+    setMessage('');
+  };
 
   return (
     <div>
@@ -17,12 +17,9 @@ const Contact = () => {
       <form onSubmit={handleSubmit}>
         <label>
           <span>Message:</span>
-          <textarea
-            onChange={(e) => setMessage(e.target.value)}
-            value={message}
-          />
+          <textarea onChange={(e) => setMessage(e.target.value)} value={message} />
         </label>
-        <button type="submit">submit</button>
+        <button type='submit'>submit</button>
       </form>
 
       <style jsx>{`
@@ -42,6 +39,6 @@ const Contact = () => {
         }
       `}</style>
     </div>
-  )
-}
-export default Contact
+  );
+};
+export default Contact;
